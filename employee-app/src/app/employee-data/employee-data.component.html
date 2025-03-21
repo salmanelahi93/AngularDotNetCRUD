@@ -1,0 +1,18 @@
+<h2>{{ id ? 'Edit' : 'Add' }} Employee</h2>
+
+<form (ngSubmit)="saveEmployee()" #employeeForm="ngForm">
+  <label>Name:</label>
+  <input type="text" [(ngModel)]="employee.name" name="name" required><br>
+
+  <label>Department:</label>
+  <input type="text" [(ngModel)]="employee.department" name="department" required><br>
+
+  <label>Email:</label>
+  <input type="email" [(ngModel)]="employee.email" name="email" required><br>
+
+  <button type="submit" class="btn btn-success">{{ id ? 'Update' : 'Add' }}</button>
+  <button routerLink="/employees" class="btn btn-secondary">Cancel</button>
+
+  <!-- Show Delete button only in edit mode -->
+  <button *ngIf="id" (click)="deleteEmployee()" type="button" class="btn btn-danger">Delete</button>
+</form>
